@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {"app\\": "app/"}
+    },
+    "require": {
+        "catfan/medoo": "^1.7"
+    }
+}
