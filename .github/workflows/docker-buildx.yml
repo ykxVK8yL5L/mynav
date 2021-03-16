@@ -26,18 +26,16 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-
-
+        
     - name: Set up Docker Buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v3
-        with:
+      uses: crazy-max/ghaction-docker-buildx@v3
+      with:
           buildx-version: latest
           qemu-version: latest
     - name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
+      run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Run Buildx
-        run: |
+      run: |
           docker buildx build \
             --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
             --file Dockerfile \
