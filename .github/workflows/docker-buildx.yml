@@ -1,4 +1,4 @@
-name: dockerx-build
+name: docker-buildx
 
 on:
   repository_dispatch:
