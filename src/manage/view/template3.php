@@ -55,6 +55,40 @@ if (empty($q)) {
     fill: currentColor;
     overflow: hidden;
 }
+/* --- search --- */
+#search{width:80%;margin:0 auto; padding: 0 0 10px; position: relative; z-index: 2;  border-radius: 5px;}
+#search form{position:relative}
+#search-text{width:100%;height:50px; line-height: 50px; text-indent: 10px; font-size:16px;border-radius:5px;background-color:#fff; border:none; box-shadow: 0 0.5rem 0.625rem #d4d4d44d;transition: 0.3s all linear;}
+#search-text:focus{background: #fff; box-shadow: 0 0px 24px 0 rgba(50, 50, 50, 0.08); border-color: #fff; }
+#search button{position:absolute;top:0;right:0;background:none;border:0; border-radius:20px;width:60px;height:36px;margin:7px 0 0;line-height:36px;border-radius:3px; outline: none;}
+#search button:hover{cursor:pointer}
+#search button i{color:#ddd;font-size:18px}
+.search-group{display:none;padding-left:75px}
+.s-current .search-type{padding-left:0;display:block}
+.s-current{display:block}
+#search-list{position:relative}
+.s-type{position:absolute;top:0;left:0;z-index:13;width:75px}
+.s-type:hover{height:auto}
+.s-type>span{display:block;height:31px;width:75px}
+.s-type-list{display:none;position:absolute;top:31px;padding:9pt 0;width:70px;background:#fff;border-radius:5px;box-shadow:0 9px 20px rgba(0,0,0,.16)}
+.s-type-list:before{position:absolute;top:-1pc;left:20px;content:'';display:block;width:0;height:0;border:10px solid transparent;border-bottom-color:#fff}
+.s-type-list label{display:block;font-size:15px;text-align:center;font-weight:normal;margin-bottom:0;padding:2px 0;cursor:pointer;transition:.3s}
+.s-type-list label:hover{background:rgba(136,136,136,.1)}
+.s-type-list .tile-lg{color:#fff;width:3pc;height:3pc;font-size:1.25rem;line-height:3rem;border-radius:.3rem;display:block;margin:auto}
+.s-type:hover .s-type-list{display:block}
+.type-text{position:absolute;left:0;width:75px;padding-left:9pt;font-size:1pc;line-height:31px}
+/*.type-text:after{content:"\f105";font-family:FontAwesome;margin:0 0 0 15px}*/
+.search-type{white-space:nowrap;margin:0}.search-type label{margin:0}
+.search-type li{display:inline-block; background: rgb(255 255 255 / 0.4); border-radius: 3px 3px 0 0;}
+.search-type li label{display:inline-block;padding:0 11px;font-size:14px;line-height:31px;border-radius:3px 3px 0 0;cursor:pointer}
+.search-type input:checked+label,.search-type input:hover+label{background-color:#fff;}
+#search-text::-webkit-input-placeholder {color: #bbb;}
+#word{ position: absolute; list-style: none; top:55px; left: 0px; width: 100%; background: rgba(259,259,259,0.9); border-radius: 5px; z-index:20000; padding: 15px 10px; box-shadow: 0 0 10px #aaa; }
+#word li{ height:35px; padding: 0 5px; text-indent: 30px; background: url(sou.svg) no-repeat 5px; background-size: 20px;  line-height: 35px; cursor: pointer; font-size: 16px; border-radius: 5px;}
+#word li:hover{ background-color: #ddd;}
+.set-check{margin-top:3px;font-size:9pt}.set-check label{margin-left:3px}
+.set-check input,.set-check label{opacity:0;transition:all .3s ease}
+.search-type li{list-style:none;display:inline-block}
 </style>
 </head>
 
@@ -138,28 +172,52 @@ if (empty($q)) {
     <div id="content">
         <div class="con">
             <div class="shlogo" style="background: url(icon/logo3.svg) no-repeat center/cover;"></div>
-            <div class="sou">
-                <form action="" method="post" target="_self">
-                   <?php 
-                   if ($t=="b"){
-                     echo'<div class="lg" style="background: url(icon/baidu.svg) no-repeat center/cover;" onclick="window.location.href=\'?t=\';"></div>';
-                   }else{
-                    //上面知道把默认谷歌改成百度，这里不知道改吗大佬们？。。
-                     echo'<div class="lg" style="background: url(icon/g.svg) no-repeat center/cover;" onclick="window.location.href=\'?t=b\';"></div>';
-                   }
-
-                    ?>
-                    <!--input class="t" type="text" value="" name="t" hidden-->
-                    <input class="wd" type="text" placeholder="请输入搜索内容" name="q" x-webkit-speech lang="zh-CN" autocomplete="off">
-                    <button><svg class="icon" style=" width: 21px; height: 21px; opacity: 0.5;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg></button>
-                </form>
-                <div id="word"></div>
+          <!--搜索开始-->
+        <div id="search" class="s-search">
+            <div id="search-list" class="hide-type-list">
+                <div class="search-group group-a s-current" style="padding-left: 20px">
+                    <ul class="search-type">
+                        <li><input checked="" hidden="" type="radio" name="type" id="type-baidu" value="https://www.baidu.com/s?wd=" data-placeholder="百度一下"><label for="type-baidu"><span style="color:#2100E0">百度</span></label></li>
+                        <li><input hidden="" type="radio" name="type" id="type-google" value="https://www.google.com.hk/search?hl=zh-CN&q=" data-placeholder="谷歌搜索"><label for="type-google"><span style="color:#3B83FA">G</span><span style="color:#F3442C">o</span><span style="color:#FFC300">o</span><span style="color:#4696F8">g</span><span style="color:#2CAB4E">l</span><span style="color:#F54231">e</span></label></li>
+                        <li><input hidden="" type="radio" name="type" id="type-syys" value="https://syys.ml/search.php?v=" data-placeholder="电影、剧集、综艺、动漫"><label for="type-syys"><span style="color:#b1870b">影视</span></label></li>
+                        <li><input hidden="" type="radio" name="type" id="type-drive" value="https://disk.misiai.com/search?what=disk&kw=" data-placeholder="影视、小说、网盘"><label for="type-drive"><span style="color:#e91e63">网盘</span></label></li>
+                        <li><input hidden="" type="radio" name="type" id="type-weibo" value="https://s.weibo.com/weibo/" data-placeholder="微博搜索"><label for="type-weibo"><span style="color:#ff5722">微博</span></label></li>
+                    </ul>
+                </div>
             </div>
+            <form action="https://www.baidu.com/s?wd=" method="get" target="_blank" id="super-search-fm">
+                <input type="text" id="search-text" placeholder="百度一下" style="outline:0" autocomplete="off">
+                <button class="submit" type="submit"><svg style="width: 20px; height: 20px; margin:7px 0; color: #29f;" class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-sousuo"></use>
+                    </svg><span></button>
+                <ul id="word" style="display: none;"></ul>
+            </form>
+            <div class="set-check hidden-xs">
+                <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off">
+            </div>
+        </div>
+        <!--搜索结束-->
         </div>
         <div class="foot" style="height: 40px;">
           <a href="https://google.co.jp/" style="color: #777;">Google</a> | 
           <a href="https://github.com" style="color: #777;">Github</a><br>
           © 2016-<?php echo date("Y") ?> by <a href="https://github.com">Hello</a> . All rights reserved.</div>
     </div>
+     <script>
+    eval(function(e, t, a, c, i, n) {
+        if (i = function(e) {
+                return (e < t ? "" : i(parseInt(e / t))) + (35 < (e %= t) ? String.fromCharCode(e + 29) : e.toString(36))
+            }, !"".replace(/^/, String)) {
+            for (; a--;) n[i(a)] = c[a] || i(a);
+            c = [function(e) {
+                return n[e]
+            }], i = function() {
+                return "\\w+"
+            }, a = 1
+        }
+        for (; a--;) c[a] && (e = e.replace(new RegExp("\\b" + i(a) + "\\b", "g"), c[a]));
+        return e
+    }('!2(){2 g(){h(),i(),j(),k()}2 h(){d.9=s()}2 i(){z a=4.8(\'A[B="7"][5="\'+p()+\'"]\');a&&(a.9=!0,l(a))}2 j(){v(u())}2 k(){w(t())}2 l(a){P(z b=0;b<e.O;b++)e[b].I.1c("s-M");a.F.F.F.I.V("s-M")}2 m(a,b){E.H.S("L"+a,b)}2 n(a){6 E.H.Y("L"+a)}2 o(a){f=a.3,v(u()),w(a.3.5),m("7",a.3.5),c.K(),l(a.3)}2 p(){z b=n("7");6 b||a[0].5}2 q(a){m("J",a.3.9?1:-1),x(a.3.9)}2 r(a){6 a.11(),""==c.5?(c.K(),!1):(w(t()+c.5),x(s()),s()?E.U(b.G,+T X):13.Z=b.G,10 0)}2 s(){z a=n("J");6 a?1==a:!0}2 t(){6 4.8(\'A[B="7"]:9\').5}2 u(){6 4.8(\'A[B="7"]:9\').W("14-N")}2 v(a){c.1e("N",a)}2 w(a){b.G=a}2 x(a){a?b.3="1a":b.16("3")}z y,a=4.R(\'A[B="7"]\'),b=4.8("#18-C-19"),c=4.8("#C-12"),d=4.8("#17-C-15"),e=4.R(".C-1b"),f=a[0];P(g(),y=0;y<a.O;y++)a[y].D("Q",o);d.D("Q",q),b.D("1d",r)}();', 62, 77, "||function|target|document|value|return|type|querySelector|checked||||||||||||||||||||||||||var|input|name|search|addEventListener|window|parentNode|action|localStorage|classList|newWindow|focus|superSearch|current|placeholder|length|for|change|querySelectorAll|setItem|new|open|add|getAttribute|Date|getItem|href|void|preventDefault|text|location|data|blank|removeAttribute|set|super|fm|_blank|group|remove|submit|setAttribute".split("|"), 0, {}));
+    </script>
 </body>
 </html>
