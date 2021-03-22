@@ -254,8 +254,27 @@ overflow-x: scroll;
                 <ul <?php $key!=0? print 'style="display:none"': print '' ?>>
                         <?php foreach ($class['nav'] as $nav) : ?>
                             <li>
-                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>">
-                            <?php $colors=array("#FFFFCC"=>"#ffffff","#FFCCCC"=>"#000000","#666666"=>"#000000","#669966"=>"#ffffff","#FF9999"=>"#ffffff","#FF6666"=>"#000000","#CC0033"=>"#ffffff","#FFCC99"=>"#ffffff");$bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];    ?>
+                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>
+                             <?php 
+                            $colors=array(
+                                "#3B5998"=>"#ffffff",
+                                "#E12F67"=>"#ffffff",
+                                "#1DB954"=>"#ffffff",
+                                "#1769FF"=>"#ffffff",
+                                "#CD201F"=>"#ffffff",
+                                "#1DA1F2"=>"#ffffff",
+                                "#CC2127"=>"#ffffff",
+                                "#1AB7EA"=>"#ffffff",
+                                "#25D366"=>"#ffffff",
+                                "#44546B"=>"#ffffff",
+                                "#272727"=>"#ffffff",
+                                "#1FBAD6"=>"#ffffff",
+                                "#79C142"=>"#ffffff",
+                                "#563D7C"=>"#ffffff",
+                                "#EA4C89"=>"#ffffff"
+                            );
+                            $bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];
+                            ?>                            
                             <?php if(!empty($nav['nav_icon'])): ?>
                             <img class="shake" src="<?php echo $nav['nav_icon'] ?>"/>
                             <?php else: ?>
