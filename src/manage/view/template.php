@@ -254,8 +254,8 @@ overflow-x: scroll;
                 <ul <?php $key!=0? print 'style="display:none"': print '' ?>>
                         <?php foreach ($class['nav'] as $nav) : ?>
                             <li>
-                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>
-                             <?php 
+                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>">
+                            <?php 
                             $colors=array(
                                 "#3B5998"=>"#ffffff",
                                 "#E12F67"=>"#ffffff",
@@ -274,7 +274,7 @@ overflow-x: scroll;
                                 "#EA4C89"=>"#ffffff"
                             );
                             $bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];
-                            ?>                            
+                            ?>
                             <?php if(!empty($nav['nav_icon'])): ?>
                             <img class="shake" src="<?php echo $nav['nav_icon'] ?>"/>
                             <?php else: ?>
