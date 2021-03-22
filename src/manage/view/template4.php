@@ -151,9 +151,7 @@
  <!-- 只兼容两级分类渲染 -->
                  <?php foreach ($navigation as $key=>$class) : ?>
                  <ul class="mylist row">
-                        <li class="title"><svg class="icon" aria-hidden="true"><svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-remen"></use>
-                </svg> <?php echo $class['category_name']; ?></li>
+                        <li class="title"><svg class="icon" aria-hidden="true"> <use xlink:href="#icon-remen"></use> </svg> <?php echo $class['category_name']; ?></li>
                         <?php foreach ($class['nav'] as $nav) : ?>
                             <li class="col-3 col-sm-3 col-md-3 col-lg-1">
                         <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>" style="text-align: center;">
