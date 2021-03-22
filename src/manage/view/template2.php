@@ -23,6 +23,19 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+.textlogo{
+    width: 40px;
+    height: 54px;
+    line-height:54px;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+</style>
 </head>
 
 <body class="page-body">
@@ -100,7 +113,31 @@
                             <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<?php echo $nav['nav_link'] ?>', '<?php echo $nav['nav_target'] ?>')" data-toggle="tooltip" data-placement="bottom" title="<?php echo $nav['nav_link'] ?>" data-original-title="<?php echo $nav['nav_name'] ?>">
                                 <div class="xe-comment-entry">
                                     <a class="xe-user-img">
-                                        <img data-src="<?php echo $nav['nav_icon'] ?>" class="lozad img-circle" width="40">
+                                        <?php 
+                                            $colors=array(
+                                                "#3B5998"=>"#ffffff",
+                                                "#E12F67"=>"#ffffff",
+                                                "#1DB954"=>"#ffffff",
+                                                "#1769FF"=>"#ffffff",
+                                                "#CD201F"=>"#ffffff",
+                                                "#1DA1F2"=>"#ffffff",
+                                                "#CC2127"=>"#ffffff",
+                                                "#1AB7EA"=>"#ffffff",
+                                                "#25D366"=>"#ffffff",
+                                                "#44546B"=>"#ffffff",
+                                                "#272727"=>"#ffffff",
+                                                "#1FBAD6"=>"#ffffff",
+                                                "#79C142"=>"#ffffff",
+                                                "#563D7C"=>"#ffffff",
+                                                "#EA4C89"=>"#ffffff"
+                                            );
+                                            $bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];
+                                        ?>
+                                         <?php if(!empty($nav['nav_icon'])): ?>
+                                         <img data-src="<?php echo $nav['nav_icon'] ?>" class="lozad img-circle" width="40">
+                                        <?php else: ?>
+                                        <span class="textlogo shake" style="background-color:<?php echo $bgcolor; ?>;color:<?php echo $fcolor; ?>"><?php echo mb_substr($nav['nav_name'],0,1) ?></span>
+                                        <?php endif; ?>
                                     </a>
                                     <div class="xe-comment">
                                         <a href="#" class="xe-user-name overflowClip_1">
