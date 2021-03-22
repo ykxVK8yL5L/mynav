@@ -15,6 +15,7 @@
         <ul class="dropdown-menu">
            <li><a href="?control=html&action=flush&tpl=template">模板1</a></li>
            <li><a href="?control=html&action=flush&tpl=template2">模板2</a></li>
+           <li><a href="?control=html&action=flush&tpl=template3">模板2</a></li>
         </ul>
       </li>
     </ul>
