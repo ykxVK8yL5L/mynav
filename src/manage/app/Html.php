@@ -23,13 +23,23 @@ class Html extends Base
         $navigation = $this->sortNav($navigation);
 
 
+        
+        if(empty($this->param['tpl'])){
+        	$tpl = 'template';
+        }else{
+        	$tpl = $this->param['tpl'];
+        }
+
+
+
         ob_start();
 
 
-        $this->fetch('view/template', [
+        $this->fetch('view/'.$tpl, [
             'menuTree' => $menuTree,
             'navigation' => $navigation
         ]);
+          
         $html = ob_get_contents();
         ob_end_clean();
         if (isset($this->param['preview']) && true == $this->param['preview']) {
