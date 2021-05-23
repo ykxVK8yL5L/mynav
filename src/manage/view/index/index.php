@@ -65,7 +65,7 @@
     function delNav(id) {
         $.ajax({
             url: '?control=nav&action=delete&id=' + id,
-            method: 'DELETE',
+            method: 'GET',
             dataType: 'JSON',
             success: function(resp) {
                 if (resp.code == 0) {
