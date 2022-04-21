@@ -151,7 +151,7 @@ overflow-x: scroll;
     </style>
 </head>
 <body>
-<div id="wrap" style="position:absolute;width:100%">
+<div id="wrap" style="position:absolute;margin:auto;top:0;left:0;right:0;bottom:0">
 <div id="top" style="margin-top:10%">
                             <div id="logo">
                                 <img src="img/1.jpeg" id="logo">    
