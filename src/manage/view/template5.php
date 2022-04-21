@@ -440,11 +440,8 @@ void main(void) {
 }
 </script>
 
-
-
-
-<div id="wrap" style="position:fixed;top:0;left:0;width:100%">
-<div id="top">
+<div id="wrap" style="position:fixed;top:0;left:0;">
+<div id="top" style="margin-top:10%">
                             <div id="logo">
                                 <img src="img/1.jpeg" id="logo">    
                             </div>
