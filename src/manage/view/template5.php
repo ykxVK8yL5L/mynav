@@ -151,6 +151,122 @@ overflow-x: scroll;
     </style>
 </head>
 <body>
+<div id="wrap" style="position:absolute;width:100%">
+<div id="top" style="margin-top:10%">
+                            <div id="logo">
+                                <img src="img/1.jpeg" id="logo">    
+                            </div>
+                        </div>    
+    <div id="main">
+        <!-- 外网访问地址 -->
+        <div class="app animated fadeInLeft" id="app">
+            <?php foreach ($navigation as $key=>$class) : ?>
+                <ul <?php $key!=0? print 'style="display:none"': print '' ?>>
+                        <?php foreach ($class['nav'] as $nav) : ?>
+                            <li>
+                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>">
+                           <?php 
+                            $colors=array(
+                              "#3b5998"=>"#ffffff",
+                               "#E12F67"=>"#ffffff",
+                               "#1db954"=>"#ffffff",
+                               "#1769ff"=>"#ffffff",
+                               "#cd201f"=>"#ffffff",
+                               "#1da1f2"=>"#ffffff",
+                               "#cc2127"=>"#ffffff",
+                               "#ea4c89"=>"#ffffff",
+                               "#56B68B"=>"#ffffff",
+                               "#0077b5"=>"#ffffff",
+                               "#cc3732"=>"#ffffff",
+                               "#323232"=>"#ffffff",
+                               "#F8630E"=>"#ffffff",
+                               "#F94877"=>"#ffffff",
+                               "#FFFC00"=>"#ffffff",
+                               "#0066DC"=>"#ffffff",
+                               "#25D366"=>"#ffffff",
+                               "#1ab7ea"=>"#ffffff",
+                               "#4d75a3"=>"#ffffff",
+                               "#44546B"=>"#ffffff",
+                               "#00b489"=>"#ffffff",
+                               "#006ed2"=>"#ffffff",
+                               "#ff5700"=>"#ffffff",
+                               "#05CC47"=>"#ffffff",
+                               "#C41200"=>"#ffffff",
+                               "#D51007"=>"#ffffff",
+                               "#272727"=>"#ffffff",
+                               "#313131"=>"#ffffff",
+                               "#FF5A60"=>"#ffffff",
+                               "#1FBAD6"=>"#ffffff",
+                               "#2196F3"=>"#ffffff",
+                               "#FF0000"=>"#ffffff",
+                               "#0088CC"=>"#ffffff",
+                               "#007EE5"=>"#ffffff",
+                               "#2890C3"=>"#ffffff",
+                               "#1C1B1A"=>"#ffffff",
+                               "#E62B1E"=>"#ffffff",
+                               "#ff3366"=>"#ffffff",
+                               "#52bad5"=>"#ffffff",
+                               "#263F6A"=>"#ffffff",
+                               "#79c142"=>"#ffffff",
+                               "#222222"=>"#ffffff",
+                               "#008cdd"=>"#ffffff",
+                               "#A4C639"=>"#ffffff",
+                               "#00AFF0"=>"#ffffff",
+                               "#76CC1E"=>"#ffffff",
+                               "#1D508D"=>"#ffffff",
+                               "#6ebc6c"=>"#ffffff",
+                               "#0088CC"=>"#ffffff",
+                               "#46A5E3"=>"#ffffff",
+                               "#0050EF"=>"#ffffff",
+                               "#6441A5"=>"#ffffff",
+                               "#205081"=>"#ffffff",
+                               "#DC3D50"=>"#ffffff",
+                               "#8ba753"=>"#ffffff",
+                               "#002B5C"=>"#ffffff",
+                               "#96BF48"=>"#ffffff",
+                               "#B30838"=>"#ffffff",
+                               "#000000"=>"#ffffff",
+                               "#171515"=>"#ffffff",
+                               "#E12828"=>"#ffffff",
+                               "#344A5F"=>"#ffffff",
+                               "#C13832"=>"#ffffff",
+                               "#1caff6"=>"#ffffff",
+                               "#9abb70"=>"#ffffff",
+                               "#19a9e5"=>"#ffffff",
+                               "#000000"=>"#ffffff",
+                               "#379ECC"=>"#ffffff",
+                               "#21759b"=>"#ffffff",
+                               "#ff0000"=>"#ffffff",
+                               "#DD4814"=>"#ffffff",
+                               "#2e9fff"=>"#ffffff",
+                               "#bb0000"=>"#ffffff",
+                               "#4b9123"=>"#ffffff",
+                               "#B97A45"=>"#ffffff",
+                               "#c22026"=>"#ffffff",
+                               "#f6a006"=>"#ffffff",
+                               "#2585e5"=>"#ffffff",
+                               "#45a1ff"=>"#ffffff",
+                               "#4264fb"=>"#ffffff",
+                               "#563d7c"=>"#ffffff"
+                            );
+                            $bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];
+                            ?>
+                            <?php if(!empty($nav['nav_icon'])): ?>
+                            <img class="shake" src="<?php echo $nav['nav_icon'] ?>"/>
+                            <?php else: ?>
+                            <span class="textlogo shake" style="background-color:<?php echo $bgcolor; ?>;color:<?php echo $fcolor; ?>"><?php echo mb_substr($nav['nav_name'],0,1) ?></span>
+                            <?php endif; ?>
+                            <strong><?php echo $nav['nav_name']; ?></strong></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endforeach; ?>
+
+        </div>
+        <!-- 内网网访问地址 -->
+        <div style="clear: both;"></div>
+    </div>
+</div>
 
 <canvas id="sakura"></canvas>
 <!-- sakura shader -->
@@ -440,122 +556,9 @@ void main(void) {
 }
 </script>
 
-<div id="wrap" style="position:fixed;top:0;left:0;">
-<div id="top" style="margin-top:10%">
-                            <div id="logo">
-                                <img src="img/1.jpeg" id="logo">    
-                            </div>
-                        </div>    
-    <div id="main">
-        <!-- 外网访问地址 -->
-        <div class="app animated fadeInLeft" id="app">
-            <?php foreach ($navigation as $key=>$class) : ?>
-                <ul <?php $key!=0? print 'style="display:none"': print '' ?>>
-                        <?php foreach ($class['nav'] as $nav) : ?>
-                            <li>
-                        <a href="<?php echo $nav['nav_link'] ?>" target="<?php echo $nav['nav_target'] ?>">
-                           <?php 
-                            $colors=array(
-                              "#3b5998"=>"#ffffff",
-                               "#E12F67"=>"#ffffff",
-                               "#1db954"=>"#ffffff",
-                               "#1769ff"=>"#ffffff",
-                               "#cd201f"=>"#ffffff",
-                               "#1da1f2"=>"#ffffff",
-                               "#cc2127"=>"#ffffff",
-                               "#ea4c89"=>"#ffffff",
-                               "#56B68B"=>"#ffffff",
-                               "#0077b5"=>"#ffffff",
-                               "#cc3732"=>"#ffffff",
-                               "#323232"=>"#ffffff",
-                               "#F8630E"=>"#ffffff",
-                               "#F94877"=>"#ffffff",
-                               "#FFFC00"=>"#ffffff",
-                               "#0066DC"=>"#ffffff",
-                               "#25D366"=>"#ffffff",
-                               "#1ab7ea"=>"#ffffff",
-                               "#4d75a3"=>"#ffffff",
-                               "#44546B"=>"#ffffff",
-                               "#00b489"=>"#ffffff",
-                               "#006ed2"=>"#ffffff",
-                               "#ff5700"=>"#ffffff",
-                               "#05CC47"=>"#ffffff",
-                               "#C41200"=>"#ffffff",
-                               "#D51007"=>"#ffffff",
-                               "#272727"=>"#ffffff",
-                               "#313131"=>"#ffffff",
-                               "#FF5A60"=>"#ffffff",
-                               "#1FBAD6"=>"#ffffff",
-                               "#2196F3"=>"#ffffff",
-                               "#FF0000"=>"#ffffff",
-                               "#0088CC"=>"#ffffff",
-                               "#007EE5"=>"#ffffff",
-                               "#2890C3"=>"#ffffff",
-                               "#1C1B1A"=>"#ffffff",
-                               "#E62B1E"=>"#ffffff",
-                               "#ff3366"=>"#ffffff",
-                               "#52bad5"=>"#ffffff",
-                               "#263F6A"=>"#ffffff",
-                               "#79c142"=>"#ffffff",
-                               "#222222"=>"#ffffff",
-                               "#008cdd"=>"#ffffff",
-                               "#A4C639"=>"#ffffff",
-                               "#00AFF0"=>"#ffffff",
-                               "#76CC1E"=>"#ffffff",
-                               "#1D508D"=>"#ffffff",
-                               "#6ebc6c"=>"#ffffff",
-                               "#0088CC"=>"#ffffff",
-                               "#46A5E3"=>"#ffffff",
-                               "#0050EF"=>"#ffffff",
-                               "#6441A5"=>"#ffffff",
-                               "#205081"=>"#ffffff",
-                               "#DC3D50"=>"#ffffff",
-                               "#8ba753"=>"#ffffff",
-                               "#002B5C"=>"#ffffff",
-                               "#96BF48"=>"#ffffff",
-                               "#B30838"=>"#ffffff",
-                               "#000000"=>"#ffffff",
-                               "#171515"=>"#ffffff",
-                               "#E12828"=>"#ffffff",
-                               "#344A5F"=>"#ffffff",
-                               "#C13832"=>"#ffffff",
-                               "#1caff6"=>"#ffffff",
-                               "#9abb70"=>"#ffffff",
-                               "#19a9e5"=>"#ffffff",
-                               "#000000"=>"#ffffff",
-                               "#379ECC"=>"#ffffff",
-                               "#21759b"=>"#ffffff",
-                               "#ff0000"=>"#ffffff",
-                               "#DD4814"=>"#ffffff",
-                               "#2e9fff"=>"#ffffff",
-                               "#bb0000"=>"#ffffff",
-                               "#4b9123"=>"#ffffff",
-                               "#B97A45"=>"#ffffff",
-                               "#c22026"=>"#ffffff",
-                               "#f6a006"=>"#ffffff",
-                               "#2585e5"=>"#ffffff",
-                               "#45a1ff"=>"#ffffff",
-                               "#4264fb"=>"#ffffff",
-                               "#563d7c"=>"#ffffff"
-                            );
-                            $bgcolor = array_rand($colors);$fcolor = $colors[$bgcolor];
-                            ?>
-                            <?php if(!empty($nav['nav_icon'])): ?>
-                            <img class="shake" src="<?php echo $nav['nav_icon'] ?>"/>
-                            <?php else: ?>
-                            <span class="textlogo shake" style="background-color:<?php echo $bgcolor; ?>;color:<?php echo $fcolor; ?>"><?php echo mb_substr($nav['nav_name'],0,1) ?></span>
-                            <?php endif; ?>
-                            <strong><?php echo $nav['nav_name']; ?></strong></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endforeach; ?>
 
-        </div>
-        <!-- 内网网访问地址 -->
-        <div style="clear: both;"></div>
-    </div>
-</div>
+
+
 <div id="footer">
     <div class="footer-contents">
         <div class="links">
