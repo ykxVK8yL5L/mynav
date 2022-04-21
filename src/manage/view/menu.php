@@ -13,10 +13,12 @@
       <li>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">生成 <span class="caret"></span></a>
         <ul class="dropdown-menu">
-           <li><a href="?control=html&action=flush&tpl=template">模板1</a></li>
-           <li><a href="?control=html&action=flush&tpl=template2">模板2</a></li>
-           <li><a href="?control=html&action=flush&tpl=template3">模板3</a></li>
-            <li><a href="?control=html&action=flush&tpl=template4">模板4</a></li>
+           <li><a href="?control=html&action=flush&tpl=template">icloud-粒子</a></li>
+           <li><a href="?control=html&action=flush&tpl=template5">icloud-樱花</a></li>
+           <li><a href="?control=html&action=flush&tpl=template2">Start</a></li>
+           <li><a href="?control=html&action=flush&tpl=template3">5IUX-1</a></li>
+           <li><a href="?control=html&action=flush&tpl=template4">5IUX-2</a></li>
+           
         </ul>
       </li>
     </ul>
