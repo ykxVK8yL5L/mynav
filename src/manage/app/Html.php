@@ -30,14 +30,27 @@ class Html extends Base
         	$tpl = $this->param['tpl'];
         }
 
+        $file = 'setting.json';
+        if(!is_file($file)){
+            $contents = '[]';          
+            file_put_contents($file, $contents);
+        }
+        $string = file_get_contents("setting.json");
+        $settings = json_decode($string, true);
+
+
+        $setting = array();
+        foreach ($settings as $key => $value) {
+            $setting[$value['key']]=$value['value'];
+        }
 
 
         ob_start();
 
-
         $this->fetch('view/'.$tpl, [
             'menuTree' => $menuTree,
-            'navigation' => $navigation
+            'navigation' => $navigation,
+            'setting' => $setting,
         ]);
           
         $html = ob_get_contents();

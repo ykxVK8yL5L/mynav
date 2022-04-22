@@ -7,6 +7,7 @@
 
 
     <ul class="nav nav-primary">
+    <li><a href="?control=setting&action=index">设置管理</a></li>
       <li><a href="?control=nav&action=index">链接管理</a></li>
       <li><a href="?control=category&action=index">分类管理</a></li>
       <!--<li><a target="_blank" href="?control=html&action=flush&preview=true">预览效果</a></li>-->
